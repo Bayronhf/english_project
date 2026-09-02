@@ -1,11 +1,3 @@
-function updateActiveFlag(){
-
-    document.querySelectorAll('#menu .flag').forEach(a => {
-        a.classList.toggle('active', a.dataset.href === currentPage);
-    });
-
-}
-
 function initComicZoom(){
 
     document.querySelectorAll('.comic-grid img').forEach(img => {
@@ -37,10 +29,50 @@ const sections = [
     { name:"PROJECT CREDITS", shortName:"CREDITS", href:"credits.html" }
 ];
 
+const secondarySections = [
+    { name:"ZERO & FIRST CONDITIONAL", shortName:"COND", href:"conditionals.html" },
+    null, null, null, null
+];
+
 let currentPage = location.pathname.split('/').pop();
 
 function isMobile(){
     return window.matchMedia('(max-width:768px)').matches;
+}
+
+function makeFlag(item){
+
+    const div = document.createElement('div');
+
+    if(!item){
+        div.className = 'item item-empty';
+        return div;
+    }
+
+    div.className = 'item';
+
+    const a = document.createElement('a');
+    a.className = 'flag';
+    if(item.href === currentPage) a.classList.add('active');
+    a.href = item.href;
+    a.dataset.href = item.href;
+    a.dataset.full = item.full ? "true" : "false";
+
+    a.innerHTML = `
+        <svg viewBox="0 0 420 110" preserveAspectRatio="none">
+            <polygon class="flag-shape" points="0,0 385,0 420,55 385,110 0,110"/>
+        </svg>
+        <span>${isMobile() ? item.shortName : item.name}</span>
+    `;
+
+    a.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleClick(item.href, item.full);
+    });
+
+    div.appendChild(a);
+    return div;
+
 }
 
 function buildMenu(){
@@ -48,40 +80,32 @@ function buildMenu(){
     const menu = document.getElementById('menu');
     menu.innerHTML = '';
 
-    let list = sections;
+    if(isMobile()){
 
-    if(!isMobile()){
-        list = sections.filter(item => item.href !== currentPage);
+        const pages = document.createElement('div');
+        pages.className = 'menu-pages';
+        pages.id = 'flag-pages';
+
+        const page1 = document.createElement('div');
+        page1.className = 'menu-page';
+        sections.forEach(item => page1.appendChild(makeFlag(item)));
+
+        const page2 = document.createElement('div');
+        page2.className = 'menu-page';
+        secondarySections.forEach(item => page2.appendChild(makeFlag(item)));
+
+        pages.appendChild(page1);
+        pages.appendChild(page2);
+        menu.appendChild(pages);
+
+        setupSwipe(menu, pages);
+
+    } else {
+
+        const list = sections.filter(item => item.href !== currentPage);
+        list.forEach(item => menu.appendChild(makeFlag(item)));
+
     }
-
-    list.forEach(item => {
-
-        const div = document.createElement('div');
-        div.className = 'item';
-
-        const a = document.createElement('a');
-        a.className = 'flag';
-        if(item.href === currentPage) a.classList.add('active');
-        a.href = item.href;
-        a.dataset.href = item.href;
-        a.dataset.full = item.full ? "true" : "false";
-
-        a.innerHTML = `
-    <svg viewBox="0 0 420 110" preserveAspectRatio="none">
-        <polygon class="flag-shape" points="0,0 385,0 420,55 385,110 0,110"/>
-    </svg>
-    <span>${isMobile() ? item.shortName : item.name}</span>
-`;
-
-        a.addEventListener('click', (e) => {
-            e.preventDefault();
-            handleClick(item.href, item.full);
-        });
-
-        div.appendChild(a);
-        menu.appendChild(div);
-
-    });
 
     const allItems = [...menu.querySelectorAll('.item')];
 
@@ -92,6 +116,34 @@ function buildMenu(){
     }, allItems.length * 70);
 
     initComicZoom();
+
+}
+
+function setupSwipe(menu, pages){
+
+    let startX = 0;
+    let currentPageIndex = 0;
+
+    menu.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    menu.addEventListener('touchend', (e) => {
+
+        const endX = e.changedTouches[0].clientX;
+        const diff = endX - startX;
+
+        if(Math.abs(diff) < 40) return;
+
+        if(diff < 0 && currentPageIndex === 0){
+            currentPageIndex = 1;
+        } else if(diff > 0 && currentPageIndex === 1){
+            currentPageIndex = 0;
+        }
+
+        pages.style.transform = `translateX(-${currentPageIndex * 50}%)`;
+
+    });
 
 }
 
@@ -126,7 +178,13 @@ function fullNavigate(href){
 
 }
 
+function updateActiveFlag(){
 
+    document.querySelectorAll('#menu .flag').forEach(a => {
+        a.classList.toggle('active', a.dataset.href === currentPage);
+    });
+
+}
 
 async function spaSwap(href){
 
@@ -149,27 +207,28 @@ async function spaSwap(href){
 
             if(currentLink.getAttribute('href') !== newStyleHref){
 
-    await new Promise((resolve) => {
-        const newLink = document.createElement('link');
-        newLink.id = 'page-style';
-        newLink.rel = 'stylesheet';
-        newLink.href = newStyleHref;
-        newLink.onload = () => {
-            currentLink.remove();
-            resolve();
-        };
-        document.head.appendChild(newLink);
-    });
+                await new Promise((resolve) => {
+                    const newLink = document.createElement('link');
+                    newLink.id = 'page-style';
+                    newLink.rel = 'stylesheet';
+                    newLink.href = newStyleHref;
+                    newLink.onload = () => {
+                        currentLink.remove();
+                        resolve();
+                    };
+                    document.head.appendChild(newLink);
+                });
 
-}
+            }
+
             content.innerHTML = newContent.innerHTML;
             content.scrollTop = 0;
             window.scrollTo(0, 0);
 
-setTimeout(() => {
-    window.scrollTo(0, 0);
-    content.scrollTop = 0;
-}, 100);
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                content.scrollTop = 0;
+            }, 100);
 
             currentPage = href;
             history.pushState(null, '', href);
@@ -218,4 +277,3 @@ function loadQuizScript(){
 }
 
 buildMenu();
-

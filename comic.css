@@ -302,19 +302,18 @@ body{
     }
 
     #menu{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:12px;
-        width:94vw;
-        margin:20px auto;
-        padding:0;
-        border-right:0;
-        border-bottom:2px solid #171717;
-        padding-bottom:20px;
-        position:sticky;
-        top:0;
-        z-index:10;
-    }
+    display:block;
+    width:94vw;
+    margin:20px auto;
+    padding:0;
+    border-right:0;
+    border-bottom:2px solid #171717;
+    padding-bottom:20px;
+    position:sticky;
+    top:0;
+    z-index:10;
+    overflow:hidden;
+}
 
     .item{
         width:auto;
@@ -366,6 +365,24 @@ body{
 
 .comic-grid img.zoomed{
     transform:scale(1.22);
+}
+
+.menu-pages{
+    display:flex;
+    width:200%;
+    transition:transform .4s ease;
+}
+
+.menu-page{
+    width:50%;
+    flex-shrink:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.item-empty{
+    height:60px;
 }
 
 }

@@ -16,6 +16,54 @@ body{
     display:flex;
     flex-direction:column;
     gap:10px;
+    position:relative;
+    overflow:hidden;
+}
+
+.page-nav{
+    position:absolute;
+    top:0;
+    z-index:30;
+    background:#1d1d1d;
+    color:#fff;
+    border:1px solid #2c2c2c;
+    padding:10px 22px;
+    border-radius:8px;
+    cursor:pointer;
+    font-family:Poppins,sans-serif;
+    font-size:16px;
+    transition:.2s;
+    box-shadow:0 8px 20px rgba(0,0,0,.4);
+}
+
+.page-nav:hover{
+    background:#262626;
+}
+
+.page-nav.next{
+    right:0;
+}
+
+.page-nav.back{
+    left:0;
+}
+
+.menu-pages{
+    display:flex;
+    width:200%;
+    transition:transform .6s ease;
+}
+
+.menu-page{
+    width:50%;
+    flex-shrink:0;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.menu-pages.show-page-2{
+    transform:translateX(-50%);
 }
 
 .item{
@@ -23,7 +71,11 @@ body{
     align-items:center;
     opacity:1;
     transform:translateX(-100vw);
-    transition:transform 2.5s ease; 
+    transition:transform 2.5s ease;
+}
+
+.item-empty{
+    height:110px;
 }
 
 .flag{
@@ -32,9 +84,7 @@ body{
     position:relative;
     flex-shrink:0;
     z-index:20;
-
     filter:drop-shadow(12px 0 18px rgba(0,0,0,.55));
-
     transition:filter .35s ease;
 }
 
@@ -55,51 +105,46 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-
     color:#fff;
     font:48px "Bebas Neue";
     letter-spacing:1px;
+    text-align:center;
+    line-height:1.1;
+    padding:0 10px;
 }
 
+.flag span.small-text{
+    font-size:36px;
+}
 
 .photo{
     display:block;
     cursor:pointer;
-
     position:relative;
     overflow:hidden;
-
     width:100%;
     height:100%;
-
     background-size:cover;
     background-position:center;
-
     border-radius:0 12px 12px 0;
-
     transform-origin:left center;
-
     transition:
         transform .35s ease,
         box-shadow .35s ease,
         filter .35s ease;
+}
 
+.photo[href="conditionals.html"]{
+    background-position:center 57%;
 }
 
 .photo::after{
-
     content:"";
-
     position:absolute;
-
     inset:0;
-
     pointer-events:none;
-
     background:rgba(0,0,0,0);
-
     transition:.35s;
-
 }
 
 .photo-container{
@@ -111,44 +156,32 @@ body{
     overflow:visible;
 }
 
+
+
 #menu:has(.photo-container:hover) .item:not(:has(.photo-container:hover)) .photo::after{
     background:rgba(0,0,0,.60);
 }
 
-.item:hover .photo-container{
-    margin-left:-35px;
-}
-
 .photo-container:hover .photo{
     transform:scaleX(1.05);
-    box-shadow:
-        0 18px 45px rgba(0,0,0,.40);
+    box-shadow:0 18px 45px rgba(0,0,0,.40);
 }
 
 .item:hover .flag{
-
     filter:drop-shadow(8px 0 10px rgba(0,0,0,.20));
-
 }
 
 .show{
-
     opacity:1;
-
     transform:none;
-
 }
 
 .hide{
-
     transform:translateX(120vw)!important;
-
 }
 
 .menu-title{
-
     display:none;
-
 }
 
 .menu-title.show{
@@ -172,6 +205,7 @@ body{
         width:94vw;
         margin:20px auto;
         gap:20px;
+        padding-top:60px;
     }
 
     .flag{
@@ -180,7 +214,11 @@ body{
     }
 
     .flag span{
-        font-size:28px;
+        font-size:22px;
+    }
+
+    .flag span.small-text{
+        font-size:20px;
     }
 
     .photo-container{
@@ -188,8 +226,8 @@ body{
         margin-left:-20px;
     }
 
-    .item:hover .photo-container{
-        margin-left:-20px;
+    .item-empty{
+        height:70px;
     }
 
     .menu-title{
@@ -198,7 +236,7 @@ body{
         font-family:"Bebas Neue";
         font-size:44px;
         letter-spacing:2px;
-        margin:0 0 40px;
+        margin:0 0 20px;
         color:#fff;
         opacity:1;
         transform:translateX(-100vw);
@@ -207,7 +245,7 @@ body{
 
     .photo{
         -webkit-tap-highlight-color:transparent;
-       } 
+    }
 
     .photo:active{
         transform:scaleX(1.05);
@@ -216,24 +254,32 @@ body{
     }
 
     .photo[href="chart.html"]{
-    background-position:center 75%;
-    background-size:154%;  
+        background-position:center 75%;
+        background-size:154%;
+    }
 
+    .photo[href="quiz.html"]{
+        background-position:left center;
+        background-size:164%;
+    }
+
+    .photo[href="credits.html"]{
+        background-position:center center;
+        background-size:166%;
+    }
+
+    .hide-btn{
+    opacity:0;
+    transition:opacity .3s ease;
+    pointer-events:none;
 }
 
-.photo[href="quiz.html"]{
-    background-position:left center;
-    background-size:164%;  
-}
-
-.photo[href="credits.html"]{
-    background-position:center center;
-    background-size:166%;
-}
-
-.photo[href="jobs.html"]{
-    background-position:center 80%;
-    background-size:135%;
-}
+    .photo[href="jobs.html"]{
+        background-position:center 80%;
+        background-size:135%;
+    }
+    .page-nav{
+        top:60px;
+    }
 
 }

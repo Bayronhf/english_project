@@ -13,251 +13,141 @@ body{
     overflow:hidden;
 }
 
-/*==========================
-        MENÚ IZQUIERDO
-==========================*/
-
 #menu{
-    justify-content:center;
-
     width:430px;
-
     padding:40px 20px;
-
     display:flex;
-
     flex-direction:column;
-
+    justify-content:center;
     gap:12px;
-
     flex-shrink:0;
-
     background:#050505;
-
     border-right:2px solid #171717;
-
-     z-index:10; 
-
+    z-index:10;
 }
 
 .item{
-
     width:100%;
-
     opacity:1;
-
     transform:translateX(-100vw);
-
-    transition:transform .5s ease;
-
+    transition:transform .7s ease;
 }
 
 .flag{
-
     width:100%;
-
     height:95px;
-
     position:relative;
-
     cursor:pointer;
-
     transition:.25s;
-
     text-decoration:none;
-
     color:inherit;
-
     display:block;
-
 }
 
 .flag:hover{
-
     transform:translateX(8px);
-
 }
 
 .flag svg{
-
     position:absolute;
-
     inset:0;
-
     width:100%;
-
     height:100%;
-
 }
 
 .flag-shape{
-
     fill:#1d1d1d;
-
 }
 
 .flag span{
-
     position:absolute;
-
     inset:0;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     font-family:"Bebas Neue";
-
     font-size:42px;
-
     letter-spacing:1px;
-
 }
 
-/*==========================
-        CONTENIDO
-==========================*/
-
 .content{
-
     flex:1;
-
     overflow-y:auto;
-
+    overflow-x:hidden;
     padding:30px 70px;
-
     opacity:1;
-
-    transform:translateX(-100vw); 
-
-    transition:transform .5s ease;
-
+    transform:translateX(-100vw);
+    transition:transform .9s ease;
+    min-width:0;
 }
 
 .content h1{
-
     font-family:"Bebas Neue";
-
     font-size:80px;
-
     letter-spacing:2px;
-
-}
-
-.content h2{
-
-    margin-top:8px;
-
-    font-size:22px;
-
-    font-weight:300;
-
-    color:#bfbfbf;
-
 }
 
 .separator{
-
     width:100%;
-
     height:2px;
-
     background:#2c2c2c;
-
     margin:30px 0 45px;
-
 }
 
-/*==========================
-        CREDITS
-==========================*/
-
-.credits-info{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
+.video-wrapper{
+    position:relative;
     width:100%;
-
-    gap:45px;
-
-    margin-top:20px;
-
+    max-width:700px;
+    aspect-ratio:16/9;
+    margin-top:50px;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.45);
 }
 
-.credits-info p{
-
+.video-wrapper iframe{
+    position:absolute;
+    inset:0;
     width:100%;
-
-    text-align:center;
-
-    font-size:18px;
-
-    font-weight:300;
-
-    color:#e0e0e0;
-
-}
-
-.credits-footer{
-
-    margin-top:auto;
-
-    padding:30px 20px 10px;
-
-    font-size:13px;
-
-    color:#6a6a6a;
-
-    border-top:1px solid #171717;
-
-    width:100%;
-
-    text-align:center;
-
-}
-.credit-pair{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:12px;
-
+    height:100%;
+    border:0;
 }
 
 .item.show{
-
     transform:none;
-
 }
 
 .item.hide{
-
     transform:translateX(120vw) !important;
-
 }
 
 .content.show{
-
     transform:none;
-
 }
 
 .content.hide{
-
     transform:translateX(120%) !important;
-
 }
 
 @media (max-width:768px){
+
+    .menu-pages{
+    display:flex;
+    width:200%;
+    transition:transform .4s ease;
+}
+
+.menu-page{
+    width:50%;
+    flex-shrink:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.item-empty{
+    height:60px;
+}
 
     body{
         flex-direction:column;
@@ -265,7 +155,7 @@ body{
         overflow:auto;
     }
 
-   #menu{
+    #menu{
     display:block;
     width:94vw;
     margin:20px auto;
@@ -283,28 +173,35 @@ body{
         width:auto;
     }
 
-    .flag svg{
-    display:none;
-}
-
-
     .flag{
         width:100%;
         height:60px;
         background:#1d1d1d;
-    border-radius:8px;
+        border-radius:8px;
+    }
+
+    .flag.active{
+        background:#000;
     }
 
     .flag span{
         font-size:18px;
     }
 
-    .flag.active{
-    background:#000;
-}
-
     .flag.active span{
         color:#888;
+    }
+
+    .flag svg{
+        display:none;
+    }
+
+    .flag{
+        -webkit-tap-highlight-color:transparent;
+    }
+
+    .flag:active .flag-shape{
+        fill:#000;
     }
 
     .content{
@@ -314,31 +211,5 @@ body{
     .content h1{
         font-size:44px;
     }
-
-    .flag:active .flag-shape{
-    fill:#000;
-}
-
-.flag{
-    -webkit-tap-highlight-color:transparent;
-}
-
-.menu-pages{
-    display:flex;
-    width:200%;
-    transition:transform .4s ease;
-}
-
-.menu-page{
-    width:50%;
-    flex-shrink:0;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.item-empty{
-    height:60px;
-}
 
 }
