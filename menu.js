@@ -25,7 +25,7 @@ const sections = [
     { name:"COMIC", shortName:"COMIC", href:"comic.html" },
     { name:"SOFTWARE JOBS", shortName:"JOBS", href:"jobs.html" },
     { name:"ORGANIZATION CHART", shortName:"CHART", href:"chart.html" },
-    { name:"BONUS TRACK: QUIZ", shortName:"QUIZ", href:"quiz.html" },
+    { name:"ZERO CONDITIONAL", shortName:"QUIZ", href:"quiz.html" },
     { name:"PROJECT CREDITS", shortName:"CREDITS", href:"credits.html" }
 ];
 
@@ -265,7 +265,7 @@ function loadQuizScript(){
         }
 
         const script = document.createElement('script');
-        script.src = 'quiz.js';
+        script.src = 'games.js';
         script.onload = () => {
             window.initQuiz();
             resolve();

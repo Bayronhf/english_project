@@ -6,41 +6,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" id="page-style" href="quiz.css">
+    <link id="page-style" rel="stylesheet" href="quiz.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <title>Quiz</title>
+    <title>Zero Conditional Games</title>
 
 </head>
 
 <body>
 
-    <!--======================
-            MENÚ
-    ======================-->
-
     <main id="menu"></main>
-
-
-    <!--======================
-          CONTENIDO
-    ======================-->
 
     <section class="content">
 
-        <h1>QUIZ</h1>
+        <h1>LEARN ZERO CONDITIONAL</h1>
 
         <div class="separator"></div>
+        <div class="intro-note">
+    New to the zero conditional? Check this first: <strong>Main Menu → Next → Zero & First Conditional</strong>, or <a href="conditionals.html">click here to go directly</a>.
+</div>
+        <div class="game-tabs">
+            <button class="game-tab" data-game="match">1. Match the Logic</button>
+            <button class="game-tab" data-game="fill">2. Choose the Form</button>
+            <button class="game-tab" data-game="truefalse">3. True or False</button>
+            <button class="game-tab" data-game="builder">4. Build the Sentence</button>
+            <button class="game-tab" data-game="memory">5. Memory Match</button>
+        </div>
 
-        <div id="quiz"></div>
-
-        <div id="quiz-result" class="quiz-result"></div>
+        <div id="game-container"></div>
 
     </section>
 
-    <script src="quiz.js"></script>
     <script src="menu.js"></script>
+    <script src="games.js"></script>
 
 </body>
 

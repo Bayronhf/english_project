@@ -13,288 +13,409 @@ body{
     overflow:hidden;
 }
 
-/*==========================
-        MENÚ IZQUIERDO
-==========================*/
-
 #menu{
-    justify-content:center;
-
     width:430px;
-
     padding:40px 20px;
-
     display:flex;
-
     flex-direction:column;
-
+    justify-content:center;
     gap:12px;
-
     flex-shrink:0;
-
     background:#050505;
-
     border-right:2px solid #171717;
-
-     z-index:10; 
-
+    z-index:10;
 }
 
 .item{
-
     width:100%;
-
     opacity:1;
-
     transform:translateX(-100vw);
-
-    transition:transform .5s ease;
-
+    transition:transform .7s ease;
 }
+
 .flag{
-
     width:100%;
-
     height:95px;
-
     position:relative;
-
     cursor:pointer;
-
     transition:.25s;
-
     text-decoration:none;
-
     color:inherit;
-
     display:block;
-
 }
 
 .flag:hover{
-
     transform:translateX(8px);
-
 }
 
 .flag svg{
-
     position:absolute;
-
     inset:0;
-
     width:100%;
-
     height:100%;
-
 }
 
 .flag-shape{
-
     fill:#1d1d1d;
-
 }
 
 .flag span{
-
     position:absolute;
-
     inset:0;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     font-family:"Bebas Neue";
-
     font-size:42px;
-
     letter-spacing:1px;
-
 }
 
-/*==========================
-        CONTENIDO
-==========================*/
-
 .content{
-
     flex:1;
-
     overflow-y:auto;
-
+    overflow-x:hidden;
     padding:30px 70px;
-
     opacity:1;
-
-    transform:translateX(100vw);
-
-    transition:transform .5s ease;
-
-    transform:translateX(-100vw); 
-
+    transform:translateX(-100vw);
+    transition:transform .9s ease;
+    min-width:0;
 }
 
 .content h1{
-
     font-family:"Bebas Neue";
-
     font-size:80px;
-
     letter-spacing:2px;
-
-}
-
-.content h2{
-
-    margin-top:8px;
-
-    font-size:22px;
-
-    font-weight:300;
-
-    color:#bfbfbf;
-
 }
 
 .separator{
-
     width:100%;
-
     height:2px;
-
     background:#2c2c2c;
-
     margin:30px 0 45px;
-
-}
-
-/*==========================
-        QUIZ
-==========================*/
-
-.quiz-question{
-
-    margin-bottom:35px;
-
-}
-
-.quiz-question h3{
-
-    font-size:22px;
-
-    font-weight:500;
-
-    margin-bottom:15px;
-
-    color:#fff;
-
-}
-
-.quiz-options{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-}
-
-.quiz-option{
-
-    padding:14px 18px;
-
-    background:#0c0c0c;
-
-    border:1px solid #232323;
-
-    border-radius:8px;
-
-    color:#fff;
-
-    font-family:Poppins,sans-serif;
-
-    font-size:16px;
-
-    text-align:left;
-
-    cursor:pointer;
-
-    transition:.2s;
-
-}
-
-.quiz-option:hover{
-
-    background:#161616;
-
-}
-
-.quiz-options.answered .quiz-option{
-
-    cursor:default;
-
-}
-
-.quiz-options.answered .quiz-option{
-
-    pointer-events:none;
-
-}
-
-.quiz-option.correct{
-
-    background:#1f4d2b;
-
-    border-color:#2e7d42;
-
-}
-
-.quiz-option.wrong{
-
-    background:#4d1f1f;
-
-    border-color:#7d2e2e;
-
-}
-
-.quiz-result{
-
-    margin-top:30px;
-
-    font-family:"Bebas Neue";
-
-    font-size:40px;
-
-    letter-spacing:1px;
-
 }
 
 .item.show{
-
     transform:none;
-
 }
 
 .item.hide{
-
     transform:translateX(120vw) !important;
-
 }
 
 .content.show{
-
     transform:none;
-
 }
 
 .content.hide{
-
     transform:translateX(120%) !important;
+}
 
+/*==========================
+        TABS
+==========================*/
+
+.game-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:35px;
+}
+
+.game-tab{
+    background:#0c0c0c;
+    color:#cfcfcf;
+    border:1px solid #232323;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-family:Poppins,sans-serif;
+    font-size:14px;
+    transition:.2s;
+}
+
+.game-tab:hover{
+    background:#161616;
+}
+
+.game-tab.active{
+    background:#fff;
+    color:#000;
+    border-color:#fff;
+}
+
+/*==========================
+        GAME 1: MATCH
+==========================*/
+
+.match-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    max-width:800px;
+}
+
+.match-col{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.match-card{
+    background:#0c0c0c;
+    border:1px solid #232323;
+    border-radius:8px;
+    padding:16px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.2s;
+}
+
+.match-card:hover{
+    background:#161616;
+}
+
+.match-card.selected{
+    border-color:#fff;
+    background:#1d1d1d;
+}
+
+.match-card.correct{
+    background:#1f4d2b;
+    border-color:#2e7d42;
+    cursor:default;
+    pointer-events:none;
+}
+
+.match-card.wrong{
+    background:#4d1f1f;
+    border-color:#7d2e2e;
+}
+
+/*==========================
+        GAME 2: FILL
+==========================*/
+
+.fill-question{
+    margin-bottom:35px;
+}
+
+.fill-question h3{
+    font-size:20px;
+    font-weight:500;
+    margin-bottom:15px;
+}
+
+.fill-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.fill-option{
+    padding:12px 20px;
+    background:#0c0c0c;
+    border:1px solid #232323;
+    border-radius:8px;
+    color:#fff;
+    font-family:Poppins,sans-serif;
+    font-size:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.fill-option:hover{
+    background:#161616;
+}
+
+.fill-options.answered .fill-option{
+    pointer-events:none;
+}
+
+.fill-option.correct{
+    background:#1f4d2b;
+    border-color:#2e7d42;
+}
+
+.fill-option.wrong{
+    background:#4d1f1f;
+    border-color:#7d2e2e;
+}
+
+/*==========================
+        GAME 3: TRUE/FALSE
+==========================*/
+
+.tf-question{
+    background:#0c0c0c;
+    border:1px solid #232323;
+    border-radius:10px;
+    padding:22px;
+    margin-bottom:20px;
+}
+
+.tf-question p{
+    font-size:17px;
+    margin-bottom:16px;
+}
+
+.tf-buttons{
+    display:flex;
+    gap:12px;
+}
+
+.tf-btn{
+    padding:10px 24px;
+    border-radius:8px;
+    border:1px solid #232323;
+    background:#1d1d1d;
+    color:#fff;
+    cursor:pointer;
+    font-family:Poppins,sans-serif;
+    font-size:15px;
+    transition:.2s;
+}
+
+.tf-btn:hover{
+    background:#262626;
+}
+
+.tf-buttons.answered .tf-btn{
+    pointer-events:none;
+}
+
+.tf-btn.correct{
+    background:#1f4d2b;
+    border-color:#2e7d42;
+}
+
+.tf-btn.wrong{
+    background:#4d1f1f;
+    border-color:#7d2e2e;
+}
+
+/*==========================
+        GAME 4: BUILDER
+==========================*/
+
+.builder-sentence-area{
+    min-height:70px;
+    background:#0c0c0c;
+    border:1px solid #232323;
+    border-radius:10px;
+    padding:16px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.builder-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.chip{
+    padding:10px 16px;
+    background:#1d1d1d;
+    border:1px solid #2c2c2c;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.2s;
+}
+
+.chip:hover{
+    background:#262626;
+}
+
+.chip.placed{
+    opacity:.3;
+    pointer-events:none;
+}
+
+.builder-btn{
+    padding:10px 22px;
+    background:#fff;
+    color:#000;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-family:Poppins,sans-serif;
+    font-size:15px;
+    font-weight:500;
+    margin-right:10px;
+}
+
+.builder-feedback{
+    margin-top:15px;
+    font-size:16px;
+}
+
+.intro-note{
+    background:#0c0c0c;
+    border:1px solid #232323;
+    border-left:4px solid #4a90d9;
+    border-radius:8px;
+    padding:16px 20px;
+    margin-bottom:30px;
+    font-size:15px;
+    line-height:1.6;
+    color:#cfcfcf;
+}
+
+.intro-note a{
+    color:#6fb3ff;
+}
+
+.intro-note strong{
+    color:#fff;
+}
+
+/*==========================
+        GAME 5: MEMORY
+==========================*/
+
+.memory-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+    max-width:700px;
+}
+
+.memory-card{
+    aspect-ratio:1;
+    background:#1d1d1d;
+    border:1px solid #2c2c2c;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px;
+    text-align:center;
+    font-size:20px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.memory-card.hidden-face{
+    font-size:28px;
+    color:#555;
+}
+
+.memory-card.matched{
+    background:#1f4d2b;
+    border-color:#2e7d42;
+    cursor:default;
+    pointer-events:none;
+}
+
+.game-score{
+    margin-top:25px;
+    font-family:"Bebas Neue";
+    font-size:32px;
+    letter-spacing:1px;
 }
 
 @media (max-width:768px){
@@ -306,44 +427,52 @@ body{
     }
 
     #menu{
-    display:block;
-    width:94vw;
-    margin:20px auto;
-    padding:0;
-    border-right:0;
-    border-bottom:2px solid #171717;
-    padding-bottom:20px;
-    position:sticky;
-    top:0;
-    z-index:10;
-    overflow:hidden;
-}
+        display:block;
+        width:94vw;
+        margin:20px auto;
+        padding:0;
+        border-right:0;
+        border-bottom:2px solid #171717;
+        padding-bottom:20px;
+        position:sticky;
+        top:0;
+        z-index:10;
+        overflow:hidden;
+    }
 
     .item{
         width:auto;
     }
 
-    .flag svg{
-    display:none;
-}
-
     .flag{
         width:100%;
         height:60px;
         background:#1d1d1d;
-    border-radius:8px;
+        border-radius:8px;
+    }
+
+    .flag.active{
+        background:#000;
     }
 
     .flag span{
         font-size:18px;
     }
 
-    .flag.active{
-    background:#000;
-}
-
     .flag.active span{
         color:#888;
+    }
+
+    .flag svg{
+        display:none;
+    }
+
+    .flag{
+        -webkit-tap-highlight-color:transparent;
+    }
+
+    .flag:active .flag-shape{
+        fill:#000;
     }
 
     .content{
@@ -354,30 +483,31 @@ body{
         font-size:44px;
     }
 
-    .flag:active .flag-shape{
-    fill:#000;
-}
+    .menu-pages{
+        display:flex;
+        width:200%;
+        transition:transform .4s ease;
+    }
 
-.flag{
-    -webkit-tap-highlight-color:transparent;
-}
+    .menu-page{
+        width:50%;
+        flex-shrink:0;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
 
-.menu-pages{
-    display:flex;
-    width:200%;
-    transition:transform .4s ease;
-}
+    .item-empty{
+        height:60px;
+    }
 
-.menu-page{
-    width:50%;
-    flex-shrink:0;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
+    .match-grid{
+        grid-template-columns:1fr 1fr;
+        gap:15px;
+    }
 
-.item-empty{
-    height:60px;
-}
+    .memory-grid{
+        grid-template-columns:repeat(3, 1fr);
+    }
 
 }
