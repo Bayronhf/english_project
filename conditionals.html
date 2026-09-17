@@ -2,16 +2,15 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Mantenemos el CSP para seguridad general e incluimos TikTok y YouTube en frame-src -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; frame-src 'self' https://www.youtube-nocookie.com https://www.tiktok.com;">
 
     <link id="page-style" rel="stylesheet" href="conditionals.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
     <title>Zero and First Conditional</title>
-
 </head>
 
 <body>
@@ -24,14 +23,28 @@
 
         <div class="separator"></div>
 
+        <h2 class="video-subtitle">What is the zero and first conditional?</h2>
+
         <div class="video-wrapper">
-          <iframe
-    src="https://www.youtube-nocookie.com/embed/W9gJMl_FYs0"
-    title="Zero and First Conditional"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-</iframe>
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/W9gJMl_FYs0"
+                title="What is the zero and first conditional?"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2 class="video-subtitle">Questions and Answers</h2>
+
+        <!-- Reemplazo con iframe directo de TikTok -->
+        <div class="video-wrapper tiktok-wrapper">
+            <iframe
+                src="https://www.tiktok.com/player/v1/7686271674592939285?music_info=1&description=1"
+                style="width: 100%; height: 580px; border: none; border-radius: 8px;"
+                allow="fullscreen"
+                title="TikTok Video">
+            </iframe>
         </div>
 
     </section>

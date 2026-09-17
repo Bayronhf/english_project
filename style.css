@@ -156,8 +156,6 @@ body{
     overflow:visible;
 }
 
-
-
 #menu:has(.photo-container:hover) .item:not(:has(.photo-container:hover)) .photo::after{
     background:rgba(0,0,0,.60);
 }
@@ -205,7 +203,33 @@ body{
         width:94vw;
         margin:20px auto;
         gap:20px;
-        padding-top:60px;
+        padding-top:130px; /* Aumentado para separar los elementos del botón */
+        position:relative;
+    }
+
+    /* Título en la parte superior */
+    .menu-title{
+        display:block;
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        text-align:center;
+        font-family:"Bebas Neue", sans-serif;
+        font-size:40px;
+        letter-spacing:2px;
+        margin:0;
+        color:#fff;
+        opacity:1;
+        transform:none;
+        transition:none;
+    }
+
+    /* Botón con más distancia respecto al título */
+    .page-nav{
+        top:65px; /* Bajado ligeramente para separarlo del título */
+        padding:8px 18px;
+        font-size:14px;
     }
 
     .flag{
@@ -228,19 +252,6 @@ body{
 
     .item-empty{
         height:70px;
-    }
-
-    .menu-title{
-        display:block;
-        text-align:center;
-        font-family:"Bebas Neue";
-        font-size:44px;
-        letter-spacing:2px;
-        margin:0 0 20px;
-        color:#fff;
-        opacity:1;
-        transform:translateX(-100vw);
-        transition:transform 2.5s ease;
     }
 
     .photo{
@@ -269,17 +280,19 @@ body{
     }
 
     .hide-btn{
-    opacity:0;
-    transition:opacity .3s ease;
-    pointer-events:none;
-}
+        opacity:0;
+        transition:opacity .3s ease;
+        pointer-events:none;
+    }
 
     .photo[href="jobs.html"]{
         background-position:center 80%;
         background-size:135%;
     }
-    .page-nav{
-        top:60px;
+
+    .photo[href="conditionals.html"]{
+        background-position:center 45%;
+        background-size:150%;
     }
 
 }

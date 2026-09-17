@@ -21,16 +21,16 @@ function initComicZoom(){
 }
 
 const sections = [
-    { name:"MAIN MENU", shortName:"MENU", href:"index.html", full:true },
+    { name:"MAIN MENU", shortName:"MAIN MENU", href:"index.html", full:true },
     { name:"COMIC", shortName:"COMIC", href:"comic.html" },
-    { name:"SOFTWARE JOBS", shortName:"JOBS", href:"jobs.html" },
-    { name:"ORGANIZATION CHART", shortName:"CHART", href:"chart.html" },
-    { name:"ZERO CONDITIONAL", shortName:"QUIZ", href:"quiz.html" },
-    { name:"PROJECT CREDITS", shortName:"CREDITS", href:"credits.html" }
+    { name:"SOFTWARE JOBS", shortName:"SOFTWARE JOBS", href:"jobs.html" },
+    { name:"ORGANIZATION CHART", shortName:"ORGANIZATION CHART", href:"chart.html" },
+    { name:"LEARN CONDITIONALS", shortName:"LEARN CONDITIONALS", href:"quiz.html" },
+    { name:"PROJECT CREDITS", shortName:"PROJECT CREDITS", href:"credits.html" }
 ];
 
 const secondarySections = [
-    { name:"ZERO & FIRST CONDITIONAL", shortName:"COND", href:"conditionals.html" },
+    { name:"ZERO & FIRST CONDITIONAL", shortName:"CONDITIONALS", href:"conditionals.html" },
     null, null, null, null
 ];
 

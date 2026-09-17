@@ -94,15 +94,37 @@ body{
     margin:30px 0 45px;
 }
 
+.video-subtitle{
+    font-family:"Bebas Neue";
+    font-size:48px;
+    letter-spacing:1px;
+    color:#fff;
+    margin-bottom:15px;
+}
+
+/* Espaciado del segundo subtítulo respecto al primer video en PC */
+.video-wrapper + .video-subtitle{
+    margin-top:70px;
+}
+
 .video-wrapper{
     position:relative;
     width:100%;
     max-width:700px;
     aspect-ratio:16/9;
-    margin-top:50px;
+    margin-top:20px;
     border-radius:12px;
     overflow:hidden;
     box-shadow:0 12px 30px rgba(0,0,0,.45);
+}
+
+/* Adaptación y centrado horizontal para el contenedor de TikTok */
+.tiktok-wrapper{
+    aspect-ratio:9/16;
+    max-width:340px;
+    margin-top:20px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .video-wrapper iframe{
@@ -132,22 +154,22 @@ body{
 @media (max-width:768px){
 
     .menu-pages{
-    display:flex;
-    width:200%;
-    transition:transform .4s ease;
-}
+        display:flex;
+        width:200%;
+        transition:transform .4s ease;
+    }
 
-.menu-page{
-    width:50%;
-    flex-shrink:0;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
+    .menu-page{
+        width:50%;
+        flex-shrink:0;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
 
-.item-empty{
-    height:60px;
-}
+    .item-empty{
+        height:60px;
+    }
 
     body{
         flex-direction:column;
@@ -155,19 +177,33 @@ body{
         overflow:auto;
     }
 
+    /* Reducción del tamaño de los subtítulos en móviles */
+    .video-subtitle{
+        font-size:24px;
+        margin-bottom:10px;
+    }
+
+    .separator + .video-subtitle{
+        margin-top:15px;
+    }
+
+    .video-wrapper + .video-subtitle{
+        margin-top:40px;
+    }
+
     #menu{
-    display:block;
-    width:94vw;
-    margin:20px auto;
-    padding:0;
-    border-right:0;
-    border-bottom:2px solid #171717;
-    padding-bottom:20px;
-    position:sticky;
-    top:0;
-    z-index:10;
-    overflow:hidden;
-}
+        display:block;
+        width:94vw;
+        margin:20px auto;
+        padding:0;
+        border-right:0;
+        border-bottom:2px solid #171717;
+        padding-bottom:20px;
+        position:sticky;
+        top:0;
+        z-index:10;
+        overflow:hidden;
+    }
 
     .item{
         width:auto;
