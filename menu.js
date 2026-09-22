@@ -31,7 +31,8 @@ const sections = [
 
 const secondarySections = [
     { name:"ZERO & FIRST CONDITIONAL", shortName:"CONDITIONALS", href:"conditionals.html" },
-    null, null, null, null
+    { name:"CODESENA SOLUTIONS", shortName:"CODESENA", href:"codesena.html" },
+    null, null, null
 ];
 
 let currentPage = location.pathname.split('/').pop();
@@ -74,6 +75,19 @@ function makeFlag(item){
     return div;
 
 }
+function applySecondarySwap(list){
+
+    const swapMap = {
+        'conditionals.html': secondarySections[1],
+        'codesena.html': secondarySections[0]
+    };
+
+    const swapItem = swapMap[currentPage];
+    if(!swapItem) return list;
+
+    return list.map(item => item.href === 'credits.html' ? swapItem : item);
+
+}
 
 function buildMenu(){
 
@@ -88,7 +102,7 @@ function buildMenu(){
 
         const page1 = document.createElement('div');
         page1.className = 'menu-page';
-        sections.forEach(item => page1.appendChild(makeFlag(item)));
+        applySecondarySwap(sections).forEach(item => page1.appendChild(makeFlag(item)));
 
         const page2 = document.createElement('div');
         page2.className = 'menu-page';
@@ -102,7 +116,7 @@ function buildMenu(){
 
     } else {
 
-        const list = sections.filter(item => item.href !== currentPage);
+        const list = applySecondarySwap(sections.filter(item => item.href !== currentPage));
         list.forEach(item => menu.appendChild(makeFlag(item)));
 
     }
@@ -118,7 +132,6 @@ function buildMenu(){
     initComicZoom();
 
 }
-
 function setupSwipe(menu, pages){
 
     let startX = 0;

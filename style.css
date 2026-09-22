@@ -275,7 +275,7 @@ body{
     }
 
     .photo[href="credits.html"]{
-        background-position:center center;
+        background-position: 40% center;
         background-size:166%;
     }
 
@@ -291,8 +291,12 @@ body{
     }
 
     .photo[href="conditionals.html"]{
-        background-position:center 45%;
+        background-position:30% 45%;
         background-size:150%;
     }
 
+    .photo[href="codesena.html"] {
+    background-position: 60% 45%;
+    background-size: 150%;
+}
 }

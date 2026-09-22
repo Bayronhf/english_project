@@ -20,29 +20,21 @@ allMenuItems.forEach(item => {
 
         const href = link.getAttribute('href');
         const isPage2 = menuPages.classList.contains('show-page-2');
+        const activeItems = isPage2 ? page2Items.filter(el => el.querySelector('.photo')) : page1Items;
+
+        activeItems.forEach((el, i) => {
+            setTimeout(() => el.classList.add('hide'), i * 300);
+        });
 
         if(isPage2){
-
-            item.classList.add('hide');
             backBtn.classList.add('hide-btn');
-
-            setTimeout(() => {
-                window.location.href = href;
-            }, 2500);
-
-        } else {
-
-            page1Items.forEach((el, i) => {
-                setTimeout(() => el.classList.add('hide'), i * 300);
-            });
-
-            const totalDelay = 2500 + (page1Items.length - 1) * 300;
-
-            setTimeout(() => {
-                window.location.href = href;
-            }, totalDelay);
-
         }
+
+        const totalDelay = 2500 + (activeItems.length - 1) * 300;
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, totalDelay);
 
     });
 
